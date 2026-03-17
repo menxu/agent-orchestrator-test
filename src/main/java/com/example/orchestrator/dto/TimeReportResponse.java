@@ -1,7 +1,9 @@
 package com.example.orchestrator.dto;
 
-import java.time.LocalDate;
-
+/**
+ * Response DTO for time report endpoint.
+ * Note: Lombok annotations are configured in pom.xml but require Java 17-21 to process.
+ */
 public class TimeReportResponse {
     private String solarDate;
     private String lunarDate;

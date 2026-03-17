@@ -1,5 +1,9 @@
 package com.example.orchestrator.dto;
 
+/**
+ * DTO for system information endpoint.
+ * Note: Lombok annotations are configured in pom.xml but require Java 17-21 to process.
+ */
 public class SystemInfoDto {
     private String hostname;
     private String osName;
@@ -11,6 +15,18 @@ public class SystemInfoDto {
     private LoadInfo load;
 
     public SystemInfoDto() {
+    }
+
+    public SystemInfoDto(String hostname, String osName, String osVersion, String architecture,
+                         CpuInfo cpu, MemoryInfo memory, DiskInfo disk, LoadInfo load) {
+        this.hostname = hostname;
+        this.osName = osName;
+        this.osVersion = osVersion;
+        this.architecture = architecture;
+        this.cpu = cpu;
+        this.memory = memory;
+        this.disk = disk;
+        this.load = load;
     }
 
     public String getHostname() {
@@ -86,6 +102,13 @@ public class SystemInfoDto {
         public CpuInfo() {
         }
 
+        public CpuInfo(String name, int physicalCores, int logicalProcessors, long frequencyHz) {
+            this.name = name;
+            this.physicalCores = physicalCores;
+            this.logicalProcessors = logicalProcessors;
+            this.frequencyHz = frequencyHz;
+        }
+
         public String getName() {
             return name;
         }
@@ -126,6 +149,13 @@ public class SystemInfoDto {
         private double usagePercent;
 
         public MemoryInfo() {
+        }
+
+        public MemoryInfo(long totalBytes, long availableBytes, long usedBytes, double usagePercent) {
+            this.totalBytes = totalBytes;
+            this.availableBytes = availableBytes;
+            this.usedBytes = usedBytes;
+            this.usagePercent = usagePercent;
         }
 
         public long getTotalBytes() {
@@ -170,6 +200,13 @@ public class SystemInfoDto {
         public DiskInfo() {
         }
 
+        public DiskInfo(long totalBytes, long freeBytes, long usedBytes, double usagePercent) {
+            this.totalBytes = totalBytes;
+            this.freeBytes = freeBytes;
+            this.usedBytes = usedBytes;
+            this.usagePercent = usagePercent;
+        }
+
         public long getTotalBytes() {
             return totalBytes;
         }
@@ -210,6 +247,14 @@ public class SystemInfoDto {
         private double cpuUsagePercent;
 
         public LoadInfo() {
+        }
+
+        public LoadInfo(double systemLoadAverage1Min, double systemLoadAverage5Min,
+                       double systemLoadAverage15Min, double cpuUsagePercent) {
+            this.systemLoadAverage1Min = systemLoadAverage1Min;
+            this.systemLoadAverage5Min = systemLoadAverage5Min;
+            this.systemLoadAverage15Min = systemLoadAverage15Min;
+            this.cpuUsagePercent = cpuUsagePercent;
         }
 
         public double getSystemLoadAverage1Min() {
